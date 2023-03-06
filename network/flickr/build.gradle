@@ -1,0 +1,33 @@
+apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'kotlin-parcelize'
+
+android {
+    namespace = "at.steinbacher.flickrdemo.network.random_user_server"
+}
+kotlin {
+    sourceSets {
+        debug {
+            kotlin.srcDir("build/generated/ksp/debug/kotlin")
+        }
+        release {
+            kotlin.srcDir("build/generated/ksp/release/kotlin")
+        }
+    }
+}
+dependencies {
+    implementation libs.koin.core
+    implementation libs.koin.android
+    implementation libs.koin.compose
+    implementation libs.androidx.compose.material
+    implementation libs.androidx.compose.material3
+
+    implementation libs.squareup.okhttp3
+    implementation libs.squareup.okhttp3.logging
+
+    implementation libs.retrofit.core
+    implementation libs.retrofit.converter.moshi
+    implementation libs.retrofit.converter.gson
+    implementation libs.retrofit.mock
+
+    implementation project(':core:common')
+}

@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        compose true
+        viewBinding true
+    }
+
+    composeOptions {
+        //https://developer.android.com/studio/releases/gradle-plugin#updating-gradle
+        kotlinCompilerExtensionVersion compiler_ext_version
+    }
+}
+
+dependencies {
+    testImplementation libs.test.junit.core
+    androidTestImplementation libs.test.junit.ext
+    androidTestImplementation libs.test.espresso.core
+}

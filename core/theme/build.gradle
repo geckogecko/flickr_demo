@@ -1,0 +1,17 @@
+plugins {
+    id 'app.cash.paparazzi' version '1.0.0'
+}
+
+apply from: "$rootDir/common-android-library.gradle"
+
+android {
+    namespace = "at.steinbacher.flickrdemo.core.theme"
+}
+
+dependencies {
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.material
+    implementation libs.androidx.compose.material3
+
+    implementation project(':core:common')
+}

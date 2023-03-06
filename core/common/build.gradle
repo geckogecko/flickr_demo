@@ -1,0 +1,21 @@
+apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'kotlin-parcelize'
+
+android {
+    namespace = "at.steinbacher.flickrdemo.core.common"
+}
+dependencies {
+    implementation libs.koin.core
+    implementation libs.koin.android
+    implementation libs.koin.compose
+    implementation libs.androidx.compose.material
+    implementation libs.androidx.compose.material3
+    implementation libs.compose.destinations.core
+
+    implementation libs.squareup.okhttp3
+    implementation libs.squareup.okhttp3.logging
+
+    implementation libs.retrofit.core
+    implementation libs.retrofit.converter.moshi
+    implementation libs.retrofit.converter.gson
+}

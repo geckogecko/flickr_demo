@@ -1,0 +1,32 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+android {
+    namespace = "at.steinbacher.flickrdemo.feature.home"
+}
+kotlin {
+    sourceSets {
+        debug {
+            kotlin.srcDir("build/generated/ksp/debug/kotlin")
+        }
+        release {
+            kotlin.srcDir("build/generated/ksp/release/kotlin")
+        }
+    }
+}
+dependencies {
+    implementation libs.koin.core
+    implementation libs.koin.android
+    implementation libs.koin.compose
+    implementation libs.androidx.compose.material
+    implementation libs.androidx.compose.material3
+
+    implementation libs.accompanist.systemuicontroller
+
+    implementation libs.retrofit.core
+
+    implementation libs.coil
+
+    implementation project(':core:common')
+    implementation project(':core:theme')
+    implementation project(':network:flickr')
+}

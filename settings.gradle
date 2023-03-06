@@ -1,0 +1,80 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    versionCatalogs {
+        libs {
+            library("androidx-core", "androidx.core", "core-ktx") version("1.9.0")
+            library("androidx-appcompat", "androidx.appcompat", "appcompat") version("1.5.1")
+            library("androidx-compose-material", "androidx.compose.material", "material") version("1.2.1")
+            library("androidx-compose-material3", "androidx.compose.material3", "material3") version("1.0.0-alpha15")
+            library("androidx-compose-lifecycle", "androidx.lifecycle", "lifecycle-viewmodel-compose") version("2.5.1")
+            library("androidx-compose-navigation", "androidx.navigation", "navigation-compose") version("2.5.2")
+            library("androidx-compose-activity", "androidx.activity", "activity-compose") version("1.5.1")
+            library("androidx-compose-ui", "androidx.compose.ui", "ui-tooling") version("1.2.1")
+
+            version("koin", "3.2.0")
+            library("koin-core", "io.insert-koin", "koin-core") versionRef("koin")
+            library("koin-android", "io.insert-koin", "koin-android") versionRef("koin")
+            library("koin-compose", "io.insert-koin", "koin-androidx-compose") versionRef("koin")
+            library("test-koin-test", "io.insert-koin", "koin-test") versionRef("koin")
+            library("test-koin-junit", "io.insert-koin", "koin-test.junit4") versionRef("koin")
+
+            version("accompanist", "0.25.1")
+            library("accompanist-systemuicontroller", "com.google.accompanist", "accompanist-systemuicontroller") versionRef("accompanist")
+            library("accompanist-permissions", "com.google.accompanist", "accompanist-permissions") versionRef("accompanist")
+            library("accompanist-insets", "com.google.accompanist", "accompanist-insets") versionRef("accompanist")
+
+            version("kotlin", "1.6.4")
+            library("kotlinx-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-android") versionRef("kotlin")
+
+            version("compose-destinations","1.7.22-beta")
+            library("compose-destinations-core", "io.github.raamcosta.compose-destinations","animations-core") versionRef("compose-destinations")
+            library("compose-destinations-ksp","io.github.raamcosta.compose-destinations","ksp") versionRef("compose-destinations")
+
+            version("okhttp", "4.10.0")
+            library("squareup-okhttp3", "com.squareup.okhttp3", "okhttp") versionRef("okhttp")
+            library("squareup-okhttp3-logging", "com.squareup.okhttp3", "logging-interceptor") versionRef("okhttp")
+            library("test-squareup.okhttp3-mockwebserver", "com.squareup.okhttp3", "mockwebserver") versionRef("okhttp")
+
+            version("retrofit", "2.9.0")
+            library("retrofit-core", "com.squareup.retrofit2", "retrofit") versionRef("retrofit")
+            library("retrofit-converter-moshi", "com.squareup.retrofit2", "converter-moshi") versionRef("retrofit")
+            library("retrofit-converter-gson", "com.squareup.retrofit2", "converter-gson") versionRef("retrofit")
+            library("retrofit-mock", "com.squareup.retrofit2", "retrofit-mock") versionRef("retrofit")
+
+            version("coil", "2.2.2")
+            library("coil", "io.coil-kt", "coil-compose") versionRef("coil")
+
+            version("espresso", "3.4.0")
+            library("test-espresso-core","androidx.test.espresso", "espresso-core").versionRef("espresso")
+
+            library("test-junit-core","junit", "junit").version("4.13.2")
+            library("test-junit-ext","androidx.test.ext", "junit").version("1.1.3")
+
+            version("mockito", "4.8.0")
+            library("test-mockito-core", "org.mockito", "mockito-core") versionRef("mockito")
+            library("test-mockito-android", "org.mockito", "mockito-android") versionRef("mockito")
+            // uses different version https://github.com/mockito/mockito-kotlin
+            library("test-mockito-kotlin", "org.mockito.kotlin", "mockito-kotlin") version("4.0.0")
+
+            library("test-parameter-injector","com.google.testparameterinjector", "test-parameter-injector").version("1.9'")
+        }
+    }
+}
+rootProject.name = "FlickrDemo"
+include ':app'
+include ':core:theme'
+include ':core:common'
+include ':feature:home'
+include ':network:flickr'
