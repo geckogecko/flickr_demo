@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -36,8 +37,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import at.steinbacher.flickrdemo.feature.home.R
 import at.steinbacher.flickrdemo.feature.home.viewmodel.HomeViewModel
 import at.steinbacher.flickrdemo.feature.home.viewmodel.NavEvent
 import at.steinbacher.flickrdemo.network.flickr.model.FlickrImage
@@ -147,11 +150,12 @@ private fun TagBar(
     modifier: Modifier
 ) {
     Column(
-        modifier = modifier.background(Color.Black.copy(alpha = 0.7f))
+        modifier = modifier.background(Color.Black.copy(alpha = 0.8f))
     ) {
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(8.dp)
         ) {
             items(tags) { tag ->
@@ -168,6 +172,7 @@ private fun TagBar(
             value = inputText.value,
             onValueChange = { inputText.value = it },
             singleLine = true,
+            placeholder = { Text(text = stringResource(R.string.enter_tag_placeholder), color = Color.LightGray) },
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
             keyboardActions = KeyboardActions(
                 onDone = {
@@ -178,9 +183,14 @@ private fun TagBar(
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.White,
                 backgroundColor = Color.Transparent,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                unfocusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.primary
             ),
-            modifier = Modifier.fillMaxWidth()
-                .systemBarsPadding()
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .navigationBarsPadding()
         )
     }
 }
