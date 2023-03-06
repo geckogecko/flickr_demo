@@ -1,4 +1,4 @@
-package com.example.common.network
+package at.steinbacher.common.network
 
 import retrofit2.Response
 import java.io.IOException
@@ -19,7 +19,13 @@ suspend fun <T> makeApiCall(apiCall: suspend () -> Response<T>): ApiResult<T> {
             if (body != null) ApiResult.Success(data = body)
             else ApiResult.Error(error = Throwable("Response body is null!"))
         } else {
-            ApiResult.Error(error = Throwable("Response code: ${response.code()} Response Body: ${response.errorBody()?.string()}"))
+            ApiResult.Error(
+                error = Throwable(
+                    "Response code: ${response.code()} Response Body: ${
+                        response.errorBody()?.string()
+                    }"
+                )
+            )
         }
     } catch (throwable: Throwable) {
         when (throwable) {

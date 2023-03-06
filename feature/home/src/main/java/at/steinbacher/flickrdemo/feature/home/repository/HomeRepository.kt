@@ -5,7 +5,7 @@ import at.steinbacher.common.FlickrResult.Companion.toFlow
 import at.steinbacher.common.FlickrResult.Companion.toResult
 import at.steinbacher.flickrdemo.network.flickr.model.FlickrImage
 import at.steinbacher.flickrdemo.network.flickr.server.FlickrServer
-import com.example.common.network.makeApiCall
+import at.steinbacher.common.network.makeApiCall
 import kotlinx.coroutines.flow.Flow
 
 interface IHomeRepository {

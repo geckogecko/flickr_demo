@@ -5,14 +5,17 @@ import at.steinbacher.flickrdemo.feature.home.repository.IHomeRepository
 import at.steinbacher.flickrdemo.network.flickr.model.FlickrImage
 
 data class ImageDetailScreenState(
-    var test: String = ""
+    var image: FlickrImage? = null
 )
 
 class ImageDetailViewModel(
+    flickrImage: FlickrImage,
 ) : BaseViewModel<ImageDetailScreenState, NavEvent>(
     initialState = ImageDetailScreenState()
 ) {
-    sealed class NavEvent {
-
+    init {
+        setDefaultState {
+            image = flickrImage
+        }
     }
 }

@@ -23,13 +23,14 @@ import at.steinbacher.flickrdemo.network.flickr.model.FlickrImage
 import at.steinbacher.theme.components.ScreenContent
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.getViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun ImageDetailScreenContent(
     image: FlickrImage,
     modifier: Modifier = Modifier
 ) {
-    val viewModel = getViewModel<ImageDetailViewModel>()
+    val viewModel = getViewModel<ImageDetailViewModel> { parametersOf(image) }
     val state = viewModel.state.collectAsState().value
 
     LaunchedEffect(viewModel.navEvents) {
@@ -44,12 +45,14 @@ fun ImageDetailScreenContent(
         state = state,
         modifier = modifier,
     ) { contentModifier ->
-        AsyncImage(
-            model = image.media.m,
-            contentDescription = image.title,
-            contentScale = ContentScale.Crop,
-            modifier = contentModifier
-                .fillMaxSize()
-        )
+        state.data.image?.let {
+            AsyncImage(
+                model = it.media.m,
+                contentDescription = it.title,
+                contentScale = ContentScale.Crop,
+                modifier = contentModifier
+                    .fillMaxSize()
+            )
+        }
     }
 }

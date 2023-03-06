@@ -1,6 +1,6 @@
 package at.steinbacher.common
 
-import com.example.common.network.ApiResult
+import at.steinbacher.common.network.ApiResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
